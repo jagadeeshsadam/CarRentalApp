@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+  <span class="brand">
+    <span class="brand-icon">🚗</span>
+    <span class="brand-text">Car Rental App</span>
+  </span>
+  <span class="spacer"></span>
+  <nav class="nav-links">
+    <button mat-button routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <span class="nav-icon">🏠</span>
+      <span class="nav-text">Home</span>
+    </button>
+    <button mat-button routerLink="/bookings" routerLinkActive="active">
+      <span class="nav-icon">📋</span>
+      <span class="nav-text">My Bookings</span>
+    </button>
+  </nav>
+</mat-toolbar>

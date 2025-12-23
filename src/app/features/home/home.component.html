@@ -1,0 +1,22 @@
+<div class="home-container">
+  <h1>Welcome to Car Rental</h1>
+  <div class="cars-grid">
+    <mat-card *ngFor="let car of cars" class="car-card">
+      <mat-card-header>
+        <mat-card-title>{{ car.name }}</mat-card-title>
+        <mat-card-subtitle>{{ car.model }} - {{ car.year }}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image [src]="car.image" [alt]="car.name">
+      <mat-card-content>
+        <p>{{ car.description }}</p>
+        <p><strong>${{ car.pricePerDay }}/day</strong></p>
+        <ul>
+          <li *ngFor="let feature of car.features">{{ feature }}</li>
+        </ul>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" [routerLink]="['/cars', car.id]">View Details</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<div *ngIf="car" class="car-detail-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ car.name }}</mat-card-title>
+      <mat-card-subtitle>{{ car.model }} - {{ car.year }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="car.image" [alt]="car.name">
+    <mat-card-content>
+      <p>{{ car.description }}</p>
+      <p><strong>${{ car.pricePerDay }}/day</strong></p>
+      <ul>
+        <li *ngFor="let feature of car.features">{{ feature }}</li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="booking-form">
+    <mat-card-title>Book This Car</mat-card-title>
+    <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <mat-label>Pickup Location</mat-label>
+        <input matInput formControlName="pickupLocation" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Drop Location</mat-label>
+        <input matInput formControlName="dropLocation" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Pickup Date</mat-label>
+        <input matInput [matDatepicker]="pickupPicker" formControlName="pickupDate" required>
+        <mat-datepicker-toggle matSuffix [for]="pickupPicker"></mat-datepicker-toggle>
+        <mat-datepicker #pickupPicker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Drop Date</mat-label>
+        <input matInput [matDatepicker]="dropPicker" formControlName="dropDate" required>
+        <mat-datepicker-toggle matSuffix [for]="dropPicker"></mat-datepicker-toggle>
+        <mat-datepicker #dropPicker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Mobile</mat-label>
+        <input matInput formControlName="mobile" required>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!bookingForm.valid">Book Now</button>
+    </form>
+  </mat-card>
+</div>

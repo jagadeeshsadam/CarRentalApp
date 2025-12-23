@@ -1,0 +1,19 @@
+<div class="bookings-container">
+  <h1>Your Bookings</h1>
+  <div *ngIf="bookings.length === 0" class="no-bookings">
+    <p>No bookings yet.</p>
+  </div>
+  <mat-card *ngFor="let booking of bookings" class="booking-card">
+    <mat-card-header>
+      <mat-card-title>Booking #{{ booking.id }}</mat-card-title>
+      <mat-card-subtitle>Status: {{ booking.status }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p><strong>Pickup:</strong> {{ booking.pickupLocation }} on {{ booking.pickupDate | date }}</p>
+      <p><strong>Drop:</strong> {{ booking.dropLocation }} on {{ booking.dropDate | date }}</p>
+      <p><strong>Distance:</strong> {{ booking.distance }} km</p>
+      <p><strong>Total Amount:</strong> ${{ booking.totalAmount.toFixed(2) }}</p>
+      <p><strong>User:</strong> {{ booking.user.name }} - {{ booking.user.email }} - {{ booking.user.mobile }}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
